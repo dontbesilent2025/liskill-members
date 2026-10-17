@@ -1,4 +1,4 @@
 interface:
   display_name: "li-angle-team（多视角找角度）"
-  short_description: "用 12 个理论视角找出素材还和哪些人有关，摆出完整连接地图，由用户自己挑方向。"
+  short_description: "用 13 个视角找出素材还和哪些人有关，标明能否连回生意，摆出完整连接地图由用户自己挑。"
   default_prompt: "使用 $li-angle-team，根据我提供的材料完成当前任务。"

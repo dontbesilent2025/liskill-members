@@ -5,14 +5,22 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'structures'
-FIELDS = ['类型', '难度', '一句话适合', '必需素材', '呈现形式', '篇幅', '来源']
-TYPES = ['知识型', '经历型', '判断型', '展示型']
+FIELDS = ['脚本类型', '难度', '一句话适合', '必需素材', '呈现形式', '篇幅', '来源']
+TYPES = ['干货', '过程', '故事', '情绪']
+METHODS = ROOT / 'methods'
+# Shared method notes and the skills that ship them.
+METHOD_TARGETS = {
+    '开头方法.md': ['li-script-opening', 'li-script-writing'],
+    '四类脚本.md': ['li-script-form', 'li-script-writing'],
+    '精修清单.md': ['li-script-writing'],
+    '理论依据.md': ['li-script-form', 'li-script-opening', 'li-script-writing'],
+}
 INDEX_SKILLS = ['li-script-form', 'li-script-opening', 'li-script-writing']
 COPY_SKILLS = INDEX_SKILLS
 # Forms that already have their own skill: listed in the index, not duplicated in the library.
 POINTERS = [
-    ('城市印象反转', '判断型', '讲一座城市的误解与真实体验，先误解后反转', '用户对这座城市的真实观察和反转经历', '`li-city-impressions`'),
-    ('故事事件 Vlog 旁白', '经历型', '一段真实经历或人物关系，写成克制、留白的旁白', '具体人物、事件和画面细节', '`li-story-vlog`'),
+    ('城市印象反转', '情绪（辅：故事）', '讲一座城市的误解与真实体验，先误解后反转', '用户对这座城市的真实观察和反转经历', '`li-city-impressions`'),
+    ('故事事件 Vlog 旁白', '故事', '一段真实经历或人物关系，写成克制、留白的旁白', '具体人物、事件和画面细节', '`li-story-vlog`'),
 ]
 
 
@@ -34,8 +42,10 @@ def info(path):
         if not match:
             raise ValueError(f'{path.name}: 基本信息缺少「{key}」')
         data[key] = match.group(1).strip()
-    if data['类型'] not in TYPES:
-        raise ValueError(f'{path.name}: 类型必须是 {"／".join(TYPES)} 之一')
+    main = data['脚本类型'].split('（', 1)[0]
+    if main not in TYPES:
+        raise ValueError(f'{path.name}: 脚本类型必须以 {"／".join(TYPES)} 之一开头')
+    data['主类型'] = main
     return data
 
 
@@ -47,19 +57,19 @@ def index():
     rows = {t: [] for t in TYPES}
     for path in structures():
         d = info(path)
-        rows[d['类型']].append(f"| {path.stem} | {cell(d['难度'])} | {cell(d['一句话适合'])} | {cell(d['必需素材'])} | {cell(d['呈现形式'])} |")
+        rows[d['主类型']].append(f"| {path.stem} | {cell(d['脚本类型'])} | {cell(d['难度'])} | {cell(d['一句话适合'])} | {cell(d['必需素材'])} | {cell(d['呈现形式'])} |")
     lines = [
         '# 结构索引',
         '',
-        '由仓库的结构库真源生成，请勿手改。第 6 步按类型挑 2–3 个候选；完整结构在本技能的 references/structures 目录，文件名就是结构名。',
+        '由仓库的结构库真源生成，请勿手改。按李同学的四类脚本分组：干货给收获感，过程留住时间、证明能力，故事建立人设和代入，情绪帮目标用户说话。第 6 步先定脚本类型，再在这一组里挑 2–3 个候选；完整结构在本技能的 references/structures 目录，文件名就是结构名。',
         '',
         f'共 {len(structures())} 个结构，另有 {len(POINTERS)} 种形式已有独立技能。',
     ]
     for t in TYPES:
-        lines += ['', f'## {t}', '', '| 结构 | 难度 | 一句话适合 | 必需素材 | 呈现形式 |', '|---|---|---|---|---|']
-        lines += rows[t] or ['| （暂无） | | | | |']
+        lines += ['', f'## {t}脚本', '', '| 结构 | 脚本类型 | 难度 | 一句话适合 | 必需素材 | 呈现形式 |', '|---|---|---|---|---|---|']
+        lines += rows[t] or ['| （暂无） | | | | | |']
     lines += ['', '## 已有独立技能的形式', '', '选中这两种时，不在第 7、8 步写，直接转到对应技能。', '',
-              '| 形式 | 类型 | 一句话适合 | 必需素材 | 转到 |', '|---|---|---|---|---|']
+              '| 形式 | 脚本类型 | 一句话适合 | 必需素材 | 转到 |', '|---|---|---|---|---|']
     lines += [f'| {n} | {t} | {a} | {m} | {s} |' for n, t, a, m, s in POINTERS]
     return '\n'.join(lines) + '\n'
 
@@ -73,6 +83,10 @@ def expected():
     for skill in COPY_SKILLS:
         for path in structures():
             result[f'skills/{skill}/references/structures/{path.name}'] = path.read_text(encoding='utf-8')
+    for name, skills in METHOD_TARGETS.items():
+        text = (METHODS / name).read_text(encoding='utf-8')
+        for skill in skills:
+            result[f'skills/{skill}/references/{name}'] = text
     return result
 
 

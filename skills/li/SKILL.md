@@ -60,7 +60,7 @@ metadata:
 | 3 | 选题角度 | 发散：`li-angle-team`；收敛：`li-conflict-topics` / `li-stasis-topoi` / `li-public-issues` / `li-topic-ladder` | 可用 | 选题与角度（多视角、扩圈另写 受众） |
 | 4 | 值不值得拍 | `li-worth-shooting` 值不值得拍 | 可用：结合账号定位判断拍、换个角度拍还是不拍；只想知道能覆盖多少人时回第 3 步用 `li-topic-ladder`；不把转发性当成拍摄价值 | 值不值得拍 |
 | 5 | 转发 | `li-social-currency` 社交货币选题判断 | 可用 | 转发判断 |
-| 6 | 脚本形式 | `li-script-form` 脚本形式 | 可用：判断内容类型，从 25 个结构里推荐 2–3 个，列出素材缺口；城市印象题转 `li-city-impressions`，故事/关系 Vlog 转 `li-story-vlog`（这两个自带第 6–8 步） | 形式 |
+| 6 | 脚本形式 | `li-script-form` 脚本形式 | 可用：按干货、过程、故事、情绪四类定脚本类型，从对应分组的结构里推荐 2–3 个，列出素材和写作要求缺口；城市印象题转 `li-city-impressions`，故事/关系 Vlog 转 `li-story-vlog`（这两个自带第 6–8 步） | 形式 |
 | 7 | 开头 | `li-script-opening` 开头 | 可用：按选定结构的开头规则写 3 个不同勾法的开头，用户选一个 | 开头 |
 | 8 | 完整脚本 | `li-script-writing` 完整脚本 | 可用：按结构逐段写全稿，缺素材处写【待补】，不代编用户经历 | 脚本 |
 | 9 | 八步审核 | `li-eight-audits` 八大审核法 | 可用 | 审核记录 |

@@ -1,4 +1,4 @@
 interface:
   display_name: "li-script-opening（开头）"
-  short_description: "按选定结构的开头规则，用真实素材写 3 个不同勾法的开头，由用户选定一个。"
+  short_description: "用说什么、场景、问题三种方式写 3 个让目标用户觉得和我有关的开头，由用户选定。"
   default_prompt: "使用 $li-script-opening，根据我提供的材料完成当前任务。"

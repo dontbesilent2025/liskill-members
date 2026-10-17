@@ -11,7 +11,8 @@ python3 -B tools/build_structures.py
 它会：
 
 - 把全部结构复制到三个写稿技能（li-script-form、li-script-opening、li-script-writing）的 references/structures 目录；
-- 从每个结构的「基本信息」生成 `structure-index.md`，放进三个写稿技能的 `references/`。
+- 从每个结构的「基本信息」生成 `structure-index.md`，放进三个写稿技能的 `references/`；
+- 把仓库 methods 目录里的方法资料（开头方法、四类脚本、精修清单、理论依据）复制到需要它们的技能。
 
 `python3 -B tools/check_skills.py` 会检查副本和索引是否过期。
 
@@ -28,7 +29,7 @@ python3 -B tools/build_structures.py
 
 ## 基本信息
 
-- 类型：知识型／经历型／判断型／展示型（只写一个主类型）
+- 脚本类型：干货／过程／故事／情绪（只写一个主类型；有辅助类型时写成「过程（辅：故事）」，依据见 methods/四类脚本.md）
 - 难度：<原材料标注的难度，如 2 级；没有标注写「未标注」>
 - 一句话适合：<什么素材、什么账号适合用它，一句话>
 - 必需素材：<最少需要的素材，用顿号分隔，一行写完>

@@ -1,4 +1,4 @@
 interface:
   display_name: "li-account-positioning（账号定位）"
-  short_description: "带实体老板从零定位：看同城对手，定变现和用户，找一个空位，落成一句话定位和账号议程。"
+  short_description: "带实体老板从零定位：算清变现链路，找一个空位，从真实经历提炼人设，用元素筛人，落成一句话定位、账号议程和前 60 条验证节点。"
   default_prompt: "使用 $li-account-positioning，根据我提供的店铺情况带我做账号定位。"

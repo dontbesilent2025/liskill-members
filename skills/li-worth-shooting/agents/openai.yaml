@@ -1,4 +1,4 @@
 interface:
   display_name: "li-worth-shooting（值不值得拍）"
-  short_description: "按需求、进来的人和信任，给选题下结论：拍、换个角度拍还是不拍，并给改法。"
+  short_description: "按需求、召来的人、信任和作品价值，判断选题拍、换个角度拍还是不拍，并给改法。"
   default_prompt: "使用 $li-worth-shooting，根据我提供的选题和账号定位，判断值不值得拍。"

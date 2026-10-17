@@ -1,4 +1,4 @@
 interface:
   display_name: "li-topic-ladder（话题扩圈阶梯）"
-  short_description: "用抽象阶梯和框架理论，把具体素材逐层推到更大话题和更宽受众，同时保留具体细节。"
+  short_description: "把只拍产品的小题一层层推到更大需求，每层写清多了谁、召来谁和怎么连回生意"
   default_prompt: "使用 $li-topic-ladder，根据我提供的材料完成当前任务。"
